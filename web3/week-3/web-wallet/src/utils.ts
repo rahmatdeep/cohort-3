@@ -23,7 +23,7 @@ export async function solBalance(key: PublicKey): Promise<number> {
   return Number(balance.data.result.value);
 }
 
-export async function ethBalance(key: string): Promise<string> {
+export async function ethBalance(key: string): Promise<number> {
   const data = JSON.stringify({
     jsonrpc: "2.0",
     id: 1,
@@ -44,5 +44,7 @@ export async function ethBalance(key: string): Promise<string> {
   };
 
   const response = await axios.request(config);
-  return String(response.data.result);
+  const bal = response.data.result;
+  const newBal = bal === "0x0" ? 0 : Number((Number(bal) / 1e18).toFixed(4));
+  return newBal;
 }

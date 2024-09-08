@@ -6,7 +6,7 @@ import { ethBalance } from "../utils";
 
 interface Keys {
   key: string;
-  balance: string;
+  balance: number;
 }
 
 export function EthWallet({ mnemonic }: { mnemonic: string }) {
