@@ -43,7 +43,7 @@ adminRouter.post("/signin", async (req, res) => {
     if (!isPasswordValid) {
       return res.status(403).json({ message: "email or password is wrong" });
     }
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_KEY);
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_KEY_ADMIN);
 
     res.json({ token });
   } catch (e) {
@@ -54,7 +54,7 @@ adminRouter.post("/signin", async (req, res) => {
 adminRouter
   .route("/course")
   .post((req, res) => {
-    res.json({ message: "this is the post verb" });
+    res.json({ message: "this is the post verb" });                                
   })
   .put((req, res) => {
     res.json({ message: "this is the put verb" });
